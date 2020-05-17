@@ -171,8 +171,8 @@ router.put('/content/:id', async (req, res) => {
 router.delete('/content/:id', async (req, res) => {
 	try {
 		var c= await Content.findOne({_id: req.params.id});
-		fs.unlinkSync(c.src);
-		fs.unlinkSync(c.poster_src);
+		fs.unlinkSync(process.env.CONTENT_SRC + c.src);
+		fs.unlinkSync(process.env.CONTENT_SRC + c.poster_src);
 		Users.find({}, (err, users) => {
 			if(err) return console.log(err);
 			let indexDeleting = -1;

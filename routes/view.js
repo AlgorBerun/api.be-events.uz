@@ -20,7 +20,7 @@ router.get('/video/:src', (req, res) => {
 router.get('/v/:id', async (req, res) => {
 	// console.log(req.headers);
 	let content = await Content.findOne({_id: req.params.id});
-   const path = content.src;
+   const path = process.env.CONTENT_SRC + content.src;
    const stat = fs.statSync(path);
    const fileSize = stat.size;
    const range = req.headers.range;

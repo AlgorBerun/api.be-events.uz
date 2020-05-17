@@ -1,4 +1,4 @@
-extends ../layout/content
+extends ../layout/content.jade
 //- Random rasm olingan URL -> https://picsum.photos/100/190?grayscale
 //- Horizontal cardlar olingan SOURCE -> https://codepen.io/rtcoms/pen/JzbKEj
 block content
@@ -34,10 +34,11 @@ block content
   br
   br
   .container
-    video(id="video" controls="controls" controlslist="nodownload" src= `/site/v/${contents[3]['_id']}` width="100%")
+    - var v = (contents[0]['_id'])? contents[0]['_id'] : ""
+    video(id="video" controls="controls" controlslist="nodownload" src = v width="100%")
     .row
       each content in contents
-        .col.s12.m6
+        .col.s12.m6.l4.xl4
           .card.horizontal
             .card-image
               img(src='https://picsum.photos/100/190?grayscale')
@@ -45,8 +46,8 @@ block content
               .card-content
                 p= content["section"]
               .card-action
-                a(href= "../."+content["src"]) VIEW
-                button(class="btn waves-effect waves-light right red contents" data-video-src= content["_id"] ) Ko'rish
+                - var attributes = {'data-video-src': content['_id'].toString()}
+                button(class="btn waves-effect waves-light right red contents" )&attributes(attributes) Ko'rish
         //- .col.s12.m6
         //-   .card.horizontal
         //-     .card-image
