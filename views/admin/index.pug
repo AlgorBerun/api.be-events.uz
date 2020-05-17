@@ -1,0 +1,85 @@
+extends ../layout_admin/index
+
+block content
+  nav.red(style='padding:0px 10px; position: fixed;')
+    .nav-wrapper
+      a.brand-logo(href='#') Alpha Online
+      a.sidenav-trigger(href='#' data-target='mobile-nav')
+        i.material-icons menu
+      ul.right.hide-on-med-and-down
+        li
+          a(href='/content/') Bosh saxifa
+        li
+          a(href='/content/content') Yangi kurs
+        li
+          a(href='/content/users') Foydalanuvchilar
+        li
+          a(href='/content/groups') Gruhlar
+  ul#mobile-nav.sidenav
+    li
+      a(href='/content/') Bosh saxifa
+    li
+      a(href='/content/content') Yangi kurs
+    li
+      a(href='/content/users') Foydalanuvchilar
+    li
+      a(href='/content/groups') Guruhlar
+
+  br
+  br
+  br
+  a.modal-trigger.waves-effect.waves-light.btn(href='#modal1' style="margin-left: 30px; margin-top: 30px") Video yuklash
+  // Modal Structure
+  #modal1.modal.modal-fixed-footer
+    .modal-content
+      .row
+        form#uploadForm.col.s12
+          .row
+            label Video file
+            .file-field.input-field
+              .btn
+                span Faylni tanlash
+                input(type='file' name="video_content")
+              .file-path-wrapper
+                input.file-path.validate(type='text' placeholder='Upload file')
+          .row
+            label Poster image
+            .file-field.input-field
+              .btn
+                span Faylni tanlash
+                input(type='file' name="video_img")
+              .file-path-wrapper
+                input.file-path.validate(type='text' placeholder='Upload file')
+          .row
+            .input-field.col.s12
+              input#name(placeholder='Video nomini kiriting' type='text' name="name")
+              label(for='name') Video nomi
+          .row
+            .input-field.col.s12
+              input#section(type='text' name="section")
+              label(for='section') Qisqacha ma'lumot
+          .row
+            .input-field.col.s12
+              textarea#text_content(style="height: 200px;" name="text_content")
+              label(for='text_content') To'liq ma'lumot
+          .row
+            .input-field.col.s12
+              input(type="submit"  name="submit" value="Yuklash")
+          .row
+            .input-field.col.s11
+              .progress
+                .determinate.progress-bar
+            .col.s1
+              a(href='#!')
+                i.small.material-icons check
+    .modal-footer
+      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Cancel
+  .container
+    table#table.highlight
+      thead
+        tr
+          th #
+          th Video nomi
+          th Video qisqacha ma'lumoti
+          th O'chirish
+      tbody#tbody

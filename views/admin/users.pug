@@ -1,0 +1,43 @@
+extends ../layout_admin/users
+
+block content
+  nav.red(style='padding:0px 10px; position: fixed;')
+    .nav-wrapper
+      a.brand-logo(href='#') Alpha Online
+      a.sidenav-trigger(href='#' data-target='mobile-nav')
+        i.material-icons menu
+      ul.right.hide-on-med-and-down
+        li
+          a(href='/content/') Bosh saxifa
+        li
+          a(href='/content/content') Yangi kurs
+        li
+          a(href='/content/users') Foydalanuvchilar
+        li
+          a(href='/content/groups') Gruhlar
+  ul#mobile-nav.sidenav
+    li
+      a(href='/content/') Bosh saxifa
+    li
+      a(href='/content/content') Yangi kurs
+    li
+      a(href='/content/users') Foydalanuvchilar
+    li
+      a(href='/content/groups') Guruhlar
+
+  br
+  br
+  br
+  .container
+    table#table.highlight
+      thead#thead
+        th #
+        th To'liq ismi
+        th Telefon raqami
+        th Hodisalar
+      tbody#tbody
+  // Modal Structure
+  #modal1.modal
+    .modal-content#model-content
+    .modal-footer
+      a.modal-close.waves-effect.waves-green.btn-flat(href='#!') Agree

@@ -1,0 +1,99 @@
+extends ../layout/content
+//- Random rasm olingan URL -> https://picsum.photos/100/190?grayscale
+//- Horizontal cardlar olingan SOURCE -> https://codepen.io/rtcoms/pen/JzbKEj
+block content
+  nav.red(style='padding:0px 10px; position: fixed; z-index: 1000000000000000000000000')
+    .nav-wrapper
+      a.brand-logo(href='#') Web Zone
+      a.sidenav-trigger(href='#' data-target='mobile-nav')
+        i.material-icons menu
+      ul.right.hide-on-med-and-down
+        li
+          a(href='#') Home
+        li
+          a(href='#') Video
+        li
+          a(href='#') Service
+        li
+          a(href='#') About
+        li
+          a(href='#') Contact
+  ul#mobile-nav.sidenav
+    li
+      a(href='#') Home
+    li
+      a(href='#') Video
+    li
+      a(href='#') Service
+    li
+      a(href='#') About
+    li
+      a(href='#') Contact
+
+  br
+  br
+  br
+  .container
+    video(id="video" controls="controls" controlslist="nodownload" src= `/site/v/${contents[3]['_id']}` width="100%")
+    .row
+      each content in contents
+        .col.s12.m6
+          .card.horizontal
+            .card-image
+              img(src='https://picsum.photos/100/190?grayscale')
+            .card-stacked
+              .card-content
+                p= content["section"]
+              .card-action
+                a(href= "../."+content["src"]) VIEW
+                button(class="btn waves-effect waves-light right red contents" data-video-src= content["_id"] ) Ko'rish
+        //- .col.s12.m6
+        //-   .card.horizontal
+        //-     .card-image
+        //-       img(src='https://picsum.photos/100/190?grayscale')
+        //-       span.card-badge.orange New
+        //-     .card-stacked
+        //-       .card-content
+        //-         p I am a very simple card. I am good at containing small bits of information.
+        //-       .card-action
+        //-         a(href='#') This is a link
+        //- .col.s12.m6
+        //-   .card.horizontal
+        //-     .card-image
+        //-       img(src='https://picsum.photos/100/190?grayscale')
+        //-       span.card-badge.green Shipped
+        //-     .card-stacked
+        //-       .card-content
+        //-         p I am a very simple card. I am good at containing small bits of information.
+        //-       .card-action
+        //-         a(href='#') This is a link
+        //- .col.s12.m6
+        //-   .card.horizontal
+        //-     .card-image
+        //-       img(src='https://picsum.photos/100/190?grayscale')
+        //-       span.card-badge.blue Updated
+        //-     .card-stacked
+        //-       .card-content
+        //-         p I am a very simple card. I am good at containing small bits of information.
+        //-       .card-action
+        //-         a(href='#') This is a link
+        //- .col.s12.m6
+        //-   .card.horizontal
+        //-     .card-image
+        //-       img(src='https://picsum.photos/100/190?grayscale')
+        //-       span.card-badge.red Urgent
+        //-     .card-stacked
+        //-       .card-content
+        //-         p I am a very simple card. I am good at containing small bits of information.
+        //-       .card-action
+        //-         a(href='#') This is a link
+        //- .col.s12.m6
+        //-   .card.horizontal
+        //-     .card-image
+        //-       img(src='https://picsum.photos/100/190?grayscale')
+        //-       span.card-badge.grey 15% Off
+        //-     .card-stacked
+        //-       .card-content
+        //-         p I am a very simple card. I am good at containing small bits of information.
+        //-       .card-action
+        //-         a(href='#') This is a link

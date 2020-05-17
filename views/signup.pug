@@ -1,0 +1,26 @@
+extends ./layout/signup
+
+block content
+  .container
+    .row
+      form#reg-form.col.s12
+        .row
+          .input-field.col.s6
+            input#first_name.validate(type='text' required='')
+            label(for='first_name') Familiya
+          .input-field.col.s6
+            input#last_name.validate(type='text' required='')
+            label(for='last_name') Ism
+        .row
+          .input-field.col.s12
+            input#email.validate(type='email' required='')
+            label(for='email') Email
+        .row
+          .input-field.col.s12
+            input#phone(type='text' minlength='6' required='')
+            label(for='phone') Telefon raqam
+        .row
+          .input-field.col.s6
+            button.btn.btn-large.btn-register.waves-effect.waves-light(type='button' id="kirish" name='action')
+              | Kirish
+              i.material-icons.right done
