@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
                 return xhr;
             },
             type: 'POST',
-            url: 'http://localhost:3001/admin/content/',
+            url: '/admin/content/',
           headers: {
             "admin-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJEb3N0b24iLCJfaWQiOiI1ZWI3NmM4MThkZWQwYzI1NTQ0ZGZkMjEiLCJpYXQiOjE1ODkwNzkxNjksImV4cCI6Ni4wMDAwMDAwMDAwMDAwMTZlKzIzfQ.f1bM2Hw4_o89-0_XUzK2oBVWEJWPQlHLRSGNaqSug"
           },
