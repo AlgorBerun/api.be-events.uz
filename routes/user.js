@@ -43,6 +43,18 @@ router.post('/register', async (req, res) =>  {
   	return res.json({message: "Bazada xatolik ro'y berganga o'xshaydi", error: 1});
   }
 });
+router.get('/access/:id', (req, res) => {
+  if(req.params.id == null) return res.json({message: "Kechirasiz lekin siz ro'yxatda yo'qsiz", error: 2});
+  if(req.params.id == "null") return res.json({message: "Kechirasiz lekin siz ro'yxatda yo'qsiz", error: 2});
+  Users.findOne({_id: req.params.id}, (err, user) => {
+    if(err) return res.json({message: err.message, error: 1});
+    if(user) {
+      res.json({user: user, error: 0});
+    } else {
+      res.json({message: "Kechirasiz lekin siz ro'yxatdan o'chirilgansiz", error: 2});
+    }
+  })
+});
 router.put('/edit_profil', async (req, res) => {
 
 });

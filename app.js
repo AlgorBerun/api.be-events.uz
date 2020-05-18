@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 app.use(cors());
 
+app.use('/', viewRouter); // CLient uchun ko'rinish
 app.use('/site', viewRouter); // CLient uchun ko'rinish
 app.use('/content', contentRouter); // admin uchun ko'rinish
 app.use('/user', userRouter); // user uchun ko'rinish va api

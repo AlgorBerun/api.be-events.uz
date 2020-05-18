@@ -144,18 +144,21 @@ router.post('/content', async (req, res) => {
 	}
 });
 router.post('/access_content', async (req, res) => {
-	let user = await Users.findOne({_id: req.params.user_id});
+	let user = await Users.findOne({_id: req.body.user_id});
 	// res.json(user);
-	let access = user.access_content[req.params.access_content_index];
-	if(access.content_id == req.params.content_id) {
-		user.access_content[req.params.access_content_index].access = req.params.access;
+	console.log(req.body);
+	let access = user.access_content[Number(req.body.access_content_index)];
+	if(access.content_id == req.body.content_id) {
+		console.log('true');
+		user.access_content[req.body.access_content_index].access = (req.body.access == "false")? false : true;
 		console.log(user);
-		Users.updateOne({_id: req.params.user_id},{access_content: user.access_content}, function(err, docs) {
+		Users.updateOne({_id: req.body.user_id},{access_content: user.access_content}, function(err, docs) {
 			if(err) console.log(err);
 			console.log(docs);
 			res.json(docs);
 		})
 	} else {
+		console.log('false')
 		return res.json({message: "content_idlar mos kelmadi!", error: 1});
 	}
 });

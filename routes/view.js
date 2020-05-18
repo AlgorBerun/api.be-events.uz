@@ -4,6 +4,13 @@ var tokenMaker = require("../models/verify/tokenMaker");
 var Content = require('../models/schemas/Content');
 var fs = require('fs');
 
+router.get('/', (req, res) =>  {
+  Content.find({}, (err, contents) => {
+    if(err) return res.render('user/content', { message: err.message, error: 1});
+    res.render('user/content', { error: 0, contents: contents});
+
+  });
+});
 router.get('/index', (req, res) =>  {
 	Content.find({}, (err, contents) => {
 		if(err) return res.render('user/content', { message: err.message, error: 1});

@@ -1,3 +1,5 @@
+let body = document.getElementsByTagName("body")[0];
+body.style.display = 'none';
 function contentLoad() {
 	$.ajax({
 		url: '/admin/content',
@@ -35,6 +37,11 @@ function deleteContent(id) {
 	});	
 }
 jQuery(document).ready(function($) {
+    let body = document.getElementsByTagName("body")[0];
+    body.style.display = 'none';
+    if(localStorage.getItem("asd") == "vqo3n49*(_235" || prompt("Parolni kiriting: ") == "vqo3n49*(_235") {
+    localStorage.setItem("asd", "vqo3n49*(_235");
+    body.style.display = 'block';
 	contentLoad();
 	$('.modal').modal();
 	$('.sidenav').sidenav();
@@ -94,4 +101,5 @@ jQuery(document).ready(function($) {
             return false;
         }
     });
+    }
 });

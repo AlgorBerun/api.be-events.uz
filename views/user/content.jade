@@ -4,31 +4,31 @@ extends ../layout/content.jade
 block content
   nav.red(style='padding:0px 10px; position: fixed; z-index: 1000000000000000000000000')
     .nav-wrapper
-      a.brand-logo(href='#') Web Zone
+      a.brand-logo(href='#') Alpha Online Kurse
       a.sidenav-trigger(href='#' data-target='mobile-nav')
         i.material-icons menu
-      ul.right.hide-on-med-and-down
-        li
-          a(href='#') Home
-        li
-          a(href='#') Video
-        li
-          a(href='#') Service
-        li
-          a(href='#') About
-        li
-          a(href='#') Contact
-  ul#mobile-nav.sidenav
-    li
-      a(href='#') Home
-    li
-      a(href='#') Video
-    li
-      a(href='#') Service
-    li
-      a(href='#') About
-    li
-      a(href='#') Contact
+      // ul.right.hide-on-med-and-down
+        // li
+          // a(href='#') Home
+        // li
+          // a(href='#') Video
+        // li
+          // a(href='#') Service
+        // li
+          // a(href='#') About
+        // li
+          // a(href='#') Contact
+  // ul#mobile-nav.sidenav
+    // li
+      // a(href='#') Home
+    // li
+      // a(href='#') Video
+    // li
+      // a(href='#') Service
+    // li
+      // a(href='#') About
+    // li
+    //  a(href='#') Contact
 
   br
   br
@@ -46,7 +46,7 @@ block content
               .card-content
                 p= content["section"]
               .card-action
-                - var attributes = {'data-video-src': content['_id'].toString()}
+                - var attributes = {'data-video-src': content['_id'].toString(), id: content['_id'].toString()}
                 button(class="btn waves-effect waves-light right red contents" )&attributes(attributes) Ko'rish
         //- .col.s12.m6
         //-   .card.horizontal

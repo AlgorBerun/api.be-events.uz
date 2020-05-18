@@ -1,3 +1,5 @@
+let body = document.getElementsByTagName("body")[0];
+body.style.display = 'none';
 let users = [];
 function contentLoad() {
 	$.ajax({
@@ -93,15 +95,10 @@ function editAccessUser(id) {
                 </table>
             `;
             $('#model-content').html(info+table);
-            let ch = document.getElementsByClassName("my-check");
-            console.clear();
-            console.log(ch);
-            for(let i=0; i<ch.length; i++) {
-                let dasd = (ch[i].checked == "false")? false : true;
-                console.log(ch[i].id);
-                console.log(typeof ch[i].checked);
-                console.log(ch[i].checked);
-                $("#id"+i).prop('checked', dasd);
+            
+            for(let i=0; i<data.access_content.length; i++) {
+                let checkbox = document.getElementById('id'+i);
+                checkbox.checked = data.access_content[i].access;
             }
             $(".switch").find("input[type=checkbox]").on("change",function() {
 
@@ -112,9 +109,15 @@ function editAccessUser(id) {
                 let access_content_index = $(this).attr('data-index');
                 let access = $(this).prop('checked');
                 $.ajax({
-                    url: `/admin/access_content/${user_id}/${content_id}/${access_content_index}/${access}`,
-                    type: 'GET',
+                    url: `/admin/access_content`,
+                    type: 'POST',
                     dataType: 'JSON',
+                    data: {
+                        user_id: user_id,
+                        content_id: content_id,
+                        access: access,
+                        access_content_index: access_content_index
+                    },
                     success: (data) => {
                         console.log('ruxsat berish o\'xshadi');
                     },  
@@ -145,7 +148,13 @@ function deleteUser(id){
     });
 }
 jQuery(document).ready(function($) {
-	contentLoad();
-	$('.modal').modal();
-	$('.sidenav').sidenav();
+    let body = document.getElementsByTagName("body")[0];
+    body.style.display = 'none';
+    if(localStorage.getItem("asd") == "vqo3n49*(_235" || prompt("Parolni kiriting: ") == "vqo3n49*(_235") {
+        localStorage.setItem("asd", "vqo3n49*(_235");
+        body.style.display = 'block';
+    	contentLoad();
+    	$('.modal').modal();
+    	$('.sidenav').sidenav();
+    }
 });

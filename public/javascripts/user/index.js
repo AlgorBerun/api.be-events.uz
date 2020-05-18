@@ -7,47 +7,6 @@ function contentLoad() {
 		video.src = '/site/v/'+content_id;
 		video.webkitRequestFullscreen();
 		video.play();
-
-	})	
-	document.addEventListener("fullscreenchange", function() {
-		let el = document.fullscreenElement;
-		console.log("fullscrenn", el);
-		if(!el) {
-			let video = document.getElementById('video');
-			video.style.display = 'none';
-			video.stop();
-			video.pause();
-		}
-	});
-	document.addEventListener("webkitfullscreenchange ", function() {
-		let el = document.fullscreenElement;
-		console.log("fullscrenn", el);
-		if(!el) {
-			let video = document.getElementById('video');
-			video.style.display = 'none';
-			video.stop();
-			video.pause();
-		}
-	});
-	document.addEventListener("mozfullscreenchange", function() {
-		let el = document.fullscreenElement;
-		console.log("fullscrenn", el);
-		if(!el) {
-			let video = document.getElementById('video');
-			video.style.display = 'none';
-			video.stop();
-			video.pause();
-		}
-	});
-	document.addEventListener("msfullscreenchange ", function() {
-		let el = document.fullscreenElement;
-		console.log("fullscrenn", el);
-		if(!el) {
-			let video = document.getElementById('video');
-			video.style.display = 'none';
-			video.stop();
-			video.pause();
-		}
 	});
 }
 function signInUser(){
@@ -87,7 +46,25 @@ $(document).ready(function(){
 	if(!localStorage.getItem('_id')) {
 		signInUser();
 	} else {
-		body.style.display = '';
-		contentLoad();
+		$.ajax({
+			url: '/user/access/'+localStorage.getItem('_id'),
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				if(data.error != 0) {
+					alert(data.message);
+					body.style.display = 'none';
+				} else {
+					for(let i in data.user.access_content){
+						if(data.user.access_content[i].access == false || data.user.access_content[i].access == "false") {
+							$("#"+data.user.access_content[i].content_id).addClass('disabled');
+						}
+					}
+					contentLoad();
+				}
+			}
+		});
+
 	}
 });
