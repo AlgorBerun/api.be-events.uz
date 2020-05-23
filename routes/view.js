@@ -26,6 +26,7 @@ router.get('/video/:src', (req, res) => {
 });
 router.get('/v/:id', async (req, res) => {
 	// console.log(req.headers);
+  console.log(req.cookies);
 	let content = await Content.findOne({_id: req.params.id});
    const path = process.env.CONTENT_SRC + content.src;
    const stat = fs.statSync(path);

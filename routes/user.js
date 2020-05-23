@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var Users = require('../models/schemas/Users');
+var Content = require('../models/schemas/Content');
 var tokenMaker = require("../models/verify/tokenMaker");
 
 
@@ -36,7 +37,13 @@ router.post('/register', async (req, res) =>  {
   	var saveUser = await savedUser.save();
   	console.log(saveUser._id);
   	console.log(token);
-
+    Users.findOne({}, (err, user) => {
+      if(!err) {
+        Content.find({}, (err, content) => {
+          user.access_content.push({content_id: content._id, access: false, content_name: content.name});
+        });
+      }
+    })
   	return res.json(saveUser);
   } catch(e) {
   	console.log(e);

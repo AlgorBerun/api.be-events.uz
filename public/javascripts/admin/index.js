@@ -57,6 +57,7 @@ jQuery(document).ready(function($) {
                         var percentComplete = ((evt.loaded / evt.total) * 100);
                         $(".progress-bar").width(percentComplete + '%');
                         $(".progress-bar").html(percentComplete+'%');
+                        $("#process").html(percentComplete+'%');
                     }
                 }, false);
                 return xhr;
